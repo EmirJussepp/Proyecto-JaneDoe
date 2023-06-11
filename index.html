@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Globo</title>
+    <link rel="stylesheet" href="style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Montserrat:wght@200&display=swap"
+      rel="stylesheet"
+    />
+    <!-- css sweet alert -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css"
+      rel="stylesheet"
+    />
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.14/dist/vue.js"></script>
+  </head>
+  <body>
+    <div id="app">
+      <header class="contenedor1">
+        <div class="logo">
+          <img :src="logoGlobo" class="logo-img" />
+        </div>
+        <div class="usuario">
+          <input
+            type="text"
+            v-model="usuario"
+            placeholder="Ingrese su usuario..."
+          />
+        </div>
+      </header>
+
+      <div class="contenedor2">
+        <div class="contenedor-usuario">
+          <div class="img-container">
+            <img :src="imageJane" width="200px" alt="" />
+          </div>
+          <ul>
+            <li>
+              <h2 class="title-janedoe">Jane Doe</h2>
+            </li>
+            <li><b>Email: </b>jane_doe@email.com</li>
+
+            <li><b>Fecha de nacimiento: </b>01/05/1996</li>
+            <br />
+            <li><b>Telefono: </b>918-936-9585</li>
+            <br />
+            <li><b>Ciudad: </b>Tokyo, Japon</li>
+            <br />
+            <p class="p1">Trabajando en Lawn N</p>
+            <br />
+          </ul>
+        </div>
+        <button class="seguir" @click="btnSeguir">{{ seguirTexto }}</button>
+      </div>
+
+      <div class="publicacion">
+        <div class="contenedor3">
+          <div>
+            <p>Publicado hace 1 semana</p>
+            <img class="img-comentario" :src="imagePubli" />
+          </div>
+          <div class="mg-class">
+            <button class="mg" type="submit" @click="btnMeGusta">
+              Me gusta
+            </button>
+            <p class="likes"><span>{{ likes }}</span> likes</p>
+          </div>
+          <div>
+            <h4 class="comentarioh4">Comentarios</h4>
+            <div class="coments">
+              <div
+                class="comentario"
+                v-for="(comentario, index) in comentarios"
+              >
+                <div>
+                  <b>{{ comentario.usuario }}:</b>
+                  <b class="textoComentario">{{ comentario.texto }}</b>
+                </div>
+
+                <button
+                  class="boton-eliminar"
+                  v-if="comentario.usuario === usuario"
+                  @click="eliminarComentario(comentarios, index)"
+                >
+                  Eliminar
+                </button>
+              </div>
+            </div>
+          </div>
+          <div class="caja-comentario">
+            <div class="comen">
+              <input
+                class="usuario"
+                type="text"
+                v-model="nuevoComentario"
+                placeholder="Deja tu comentario..."
+              />
+              <button class="seguir" @click="agregarComentario">
+                Comentar
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="about-container">
+          <h3>Sobre mí</h3>
+          <p>
+            ¡Hola a todos! Soy Jane, y actualmente vivo en la vibrante y
+            emocionante ciudad de Tokio, Japón. Me encanta capturar la esencia
+            de la vida urbana a través de mi lente, explorando el contraste
+            entre la arquitectura moderna y las tradiciones centenarias que
+            conviven en esta metrópolis única. Desde rascacielos deslumbrantes y
+            calles bulliciosas hasta templos serenos y jardines tranquilos,
+            encuentro inspiración en cada rincón de esa increíble ciudad.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <script src="Vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+  </body>
+</html>
