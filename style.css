@@ -217,7 +217,9 @@ body {
     flex-direction: column;
     gap: 10px;
 }
-
+li {
+    margin-bottom: 5px;
+}
 .user-coment {
     color: var(--background_primary);
 }
